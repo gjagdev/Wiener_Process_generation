@@ -1,0 +1,22 @@
+% This code generates a Wiener process in MATLAB.
+    close all
+    clear all
+    rng('default')  % Fix the seed for RN generation
+    
+% Intial Values
+    timestep = 0.001;
+    t = 1/0.001;   % Terminal value
+    X = (0:timestep:1);  
+    W = X;      % Dummy vector
+    W(1) = 0;   % Initializing W
+
+% Generating the Wiener Process
+    for i=1:t
+        W(i+1) = W(i) + sqrt(timestep)*randn();
+    end
+
+% Plotting W
+    plot(X,W)
+    title('Wiener Process Simulation')
+    xlabel('t')
+    ylabel('W(t)')
